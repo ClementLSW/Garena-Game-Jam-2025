@@ -196,7 +196,7 @@ public class ResumeGenerator : MonoBehaviour
                 {
                     0 => "My superpower is " + temp + ".",
                     1 => "I have the ability of " + temp + ".",
-                    2 => "Blessed with the power of " + temp + "they ",
+                    2 => "Blessed with the power of " + temp + ",",
                     _ => "My superpower is " + temp + ".",
                 };
 
@@ -207,7 +207,7 @@ public class ResumeGenerator : MonoBehaviour
                 {
                     0 => tempWeakness + " is the one thing that haunts me.",
                     1 => "I struggle with " + tempWeakness + ".",
-                    2 => "Above all, " + tempWeakness + "scares me the most.",
+                    2 => "Above all, " + tempWeakness + " scares me the most.",
                     _ => "My weakness is " + tempWeakness + ".",
                 };
 
