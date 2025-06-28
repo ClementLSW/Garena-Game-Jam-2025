@@ -28,11 +28,11 @@ public class WheelCollider : MonoBehaviour
         {
             if (colliderIndex == 4)
             {
-                other.gameObject.GetComponent<AnswerBoxControl>().isAnswer = true;
+                other.gameObject.GetComponent<AnswerBoxControl>().boxInFocus = true;
             }
             else
             {
-                other.gameObject.GetComponent<AnswerBoxControl>().isAnswer = false;
+                other.gameObject.GetComponent<AnswerBoxControl>().boxInFocus = false;
             }
 
             if (colliderIndex == 1 || colliderIndex == 2 || colliderIndex == 6 || colliderIndex == 7 || colliderIndex == 8)
