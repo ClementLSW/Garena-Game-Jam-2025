@@ -1,3 +1,4 @@
+using Assets.Scripts.Resume;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
@@ -59,31 +60,43 @@ public class ResumeDataDeserializer : MonoBehaviour
 
     public string GetPower()
     {
-        return "Super Strength.";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.Superpower]
+            .PossibleAnswers[Random.Range(0, 3)];
     }
     public string GetWeakness()
     {
-        return "Cold";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.Weakness]
+            .PossibleAnswers[Random.Range(0, 3)];
     }
 
     public string GetPet()
     {
-        return "Black Cat";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.Pet]
+            .PossibleAnswers[Random.Range(0, 3)];
     }
 
     public string GetHobby()
     {
-        return "Reading Books";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.Hobby]
+            .PossibleAnswers[Random.Range(0, 3)];
     }
 
 
     public string GetHometown()
     {
-        return "New York";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.HomeTown]
+            .PossibleAnswers[Random.Range(0, 3)];
     }
 
     public string GetFavoriteFood()
     {
-        return "Pizza";
+        return ResumeGenerator.Instance
+            .CategoryDataMap[Category.FavouriteFood]
+            .PossibleAnswers[Random.Range(0,3)];
     }
 }

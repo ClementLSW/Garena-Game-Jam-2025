@@ -1,3 +1,5 @@
+using Assets.Scripts.Resume;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ResumeGenerator : MonoBehaviour
@@ -14,10 +16,10 @@ public class ResumeGenerator : MonoBehaviour
         public int PowersUsed;
         public string Height;
         public string Weight;
-        
-        public string Power;
+
+        public string Superpower;
         public string Weakness;
-        
+
         public string Pet;
         public string Hobby;
         public string Hometown;
@@ -53,6 +55,98 @@ public class ResumeGenerator : MonoBehaviour
         }
     }
 
+    public Dictionary<Category, CategoryData> CategoryDataMap { get; private set; }
+
+    private void InitializeCategoryData()
+    {
+        CategoryDataMap = new Dictionary<Category, CategoryData>();
+
+        CategoryDataMap[Category.FavouriteFood] = new CategoryData(
+            new List<string> {
+                "Pizza",
+                "Sushi",
+                "Ramen"
+            },
+            new List<string> {
+                "After a long day, i go home and eat what?",
+                "My all time favourite food is?",
+                "What is my favourite Dinner?"
+            }
+            );
+
+        CategoryDataMap[Category.HomeTown] = new CategoryData(
+            new List<string>
+            {
+                "New York",
+                "Los Angeles",
+                "Chicago"
+            },
+            new List<string>
+            {
+                "Where did I grow up?",
+                "What is my hometown?",
+                "Where do I call home?"
+            }
+            );
+
+        CategoryDataMap[Category.Hobby] = new CategoryData(
+            new List<string>
+            {
+                "Knitting",
+                "Reading Books",
+                "Playing Video Games"
+            },
+            new List<string>
+            {
+                "What do I like to do in my free time?",
+                "What is my favourite hobby?",
+                "What do I enjoy doing?"
+            }
+            );
+
+        CategoryDataMap[Category.Pet] = new CategoryData(
+            new List<string>
+            {
+                "Dog",
+                "Cat",
+                "Parrot"
+            },
+            new List<string>
+            {
+                "What is my pet?",
+                "What animal do I have?",
+                "What is my beloved pet?"
+            }
+            );
+        CategoryDataMap[Category.Superpower] = new CategoryData(
+            new List<string>
+            {
+                "Invisibility",
+                "Super Strength",
+                "Flight"
+            },
+            new List<string>
+            {
+                "What is my superpower?",
+                "What can I do that others can't?",
+                "What is my unique ability?"
+            }
+            );
+        CategoryDataMap[Category.Weakness] = new CategoryData(
+            new List<string>
+            {
+                "Kryptonite",
+                "Fear of Heights",
+                "Overthinking"
+            },
+            new List<string>
+            {
+                "What is my weakness?",
+                "What can defeat me?",
+                "What is my Achilles' heel?"
+            }
+            );
+    }
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -64,6 +158,8 @@ public class ResumeGenerator : MonoBehaviour
 
         _instance = this;
         deserializer = new ResumeDataDeserializer();
+        InitializeCategoryData();
+        GenerateData();
     }
 
     public void GenerateData()
@@ -74,7 +170,7 @@ public class ResumeGenerator : MonoBehaviour
             GovtName = deserializer.GetGovtName(),
             Age = deserializer.GetAge(),
             Avatar = deserializer.GetSprite(),
-            Power = deserializer.GetPower(),
+            Superpower = deserializer.GetPower(),
             Pet = deserializer.GetPet(),
             Hobby = deserializer.GetHobby(),
             Weakness = deserializer.GetWeakness(),
@@ -83,7 +179,7 @@ public class ResumeGenerator : MonoBehaviour
             Height = deserializer.GetHeight(),
             Weight = deserializer.GetWeight()
         };
-        
+
         _data = temp;
     }
 }
