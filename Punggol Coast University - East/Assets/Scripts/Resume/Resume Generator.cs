@@ -63,9 +63,9 @@ public class ResumeGenerator : MonoBehaviour
 
         CategoryDataMap[Category.FavouriteFood] = new CategoryData(
             new List<string> {
-                "Pizza",
-                "Sushi",
-                "Ramen"
+                "<color=red>pizza</color>",
+                "<color=red>sushi</color>",
+                "<color=red>ramen</color>"
             },
             new List<string> {
                 "After a long day, i go home and eat what?",
@@ -77,9 +77,9 @@ public class ResumeGenerator : MonoBehaviour
         CategoryDataMap[Category.HomeTown] = new CategoryData(
             new List<string>
             {
-                "New York",
-                "Los Angeles",
-                "Chicago"
+                "<color=red>New York</color>",
+                "<color=red>Los Angeles</color>",
+                "<color=red>Chicago</color>"
             },
             new List<string>
             {
@@ -92,9 +92,9 @@ public class ResumeGenerator : MonoBehaviour
         CategoryDataMap[Category.Hobby] = new CategoryData(
             new List<string>
             {
-                "Knitting",
-                "Reading Books",
-                "Playing Video Games"
+                "<color=red>knitting</color>",
+                "<color=red>reading books</color>",
+                "<color=red>playing video games</color>"
             },
             new List<string>
             {
@@ -107,9 +107,9 @@ public class ResumeGenerator : MonoBehaviour
         CategoryDataMap[Category.Pet] = new CategoryData(
             new List<string>
             {
-                "Dog",
-                "Cat",
-                "Parrot"
+                "<color=red>dog</color>",
+                "<color=red>cat</color>",
+                "<color=red>parrot</color>"
             },
             new List<string>
             {
@@ -121,9 +121,9 @@ public class ResumeGenerator : MonoBehaviour
         CategoryDataMap[Category.Superpower] = new CategoryData(
             new List<string>
             {
-                "Invisibility",
-                "Super Strength",
-                "Flight"
+                "<color=red>invisibility</color>",
+                "<color=red>super strength</color>",
+                "<color=red>flight</color>"
             },
             new List<string>
             {
@@ -135,9 +135,9 @@ public class ResumeGenerator : MonoBehaviour
         CategoryDataMap[Category.Weakness] = new CategoryData(
             new List<string>
             {
-                "Kryptonite",
-                "Fear of Heights",
-                "Overthinking"
+                "<color=red>Kryptonite</color>",
+                "<color=red>fear of heights</color>",
+                "<color=red>overthinking</color>"
             },
             new List<string>
             {
@@ -181,6 +181,7 @@ public class ResumeGenerator : MonoBehaviour
         };
 
         _data = temp;
+        QuestionInstance.Instance.GenerateAllQuestions();
     }
 
     public string DataFluff(Category cat)
@@ -196,7 +197,7 @@ public class ResumeGenerator : MonoBehaviour
                 {
                     0 => "My superpower is " + temp + ".",
                     1 => "I have the ability of " + temp + ".",
-                    2 => "Blessed with the power of " + temp + "they ",
+                    2 => "Blessed with the power of " + temp + ",",
                     _ => "My superpower is " + temp + ".",
                 };
 
@@ -207,7 +208,7 @@ public class ResumeGenerator : MonoBehaviour
                 {
                     0 => tempWeakness + " is the one thing that haunts me.",
                     1 => "I struggle with " + tempWeakness + ".",
-                    2 => "Above all, " + tempWeakness + "scares me the most.",
+                    2 => "Above all, " + tempWeakness + " scares me the most.",
                     _ => "My weakness is " + tempWeakness + ".",
                 };
 

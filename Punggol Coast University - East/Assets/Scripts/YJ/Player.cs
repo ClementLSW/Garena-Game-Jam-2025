@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,11 +12,14 @@ public class Player : MonoBehaviour
 
     float power = 0f;
 
+    [SerializeField] AnimatorController controllerLeft, controllerRight;
+
     private void Start()
     {
         playerId = players.Count;
         players.Add(this);
         scrollController = scrollController != null ? scrollController : FindAnyObjectByType<ResumeScroll>();
+        GetComponent<Animator>().runtimeAnimatorController = playerId % 2 != 0 ? controllerLeft : controllerRight;
     }
     private void Update()
     {
