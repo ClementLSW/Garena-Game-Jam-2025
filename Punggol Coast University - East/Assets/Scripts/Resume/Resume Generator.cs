@@ -44,7 +44,7 @@ public class ResumeGenerator : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<ResumeGenerator>();
+                _instance = FindAnyObjectByType<ResumeGenerator>();
                 if (_instance == null)
                 {
                     GameObject obj = new GameObject("ResumeGenerator");

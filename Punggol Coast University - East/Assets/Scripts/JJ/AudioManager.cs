@@ -11,9 +11,10 @@ public class AudioManager : MonoBehaviour
     }
 
     public AudioAssets BGM; // required manual assignment
-    public AudioAssets SFX;
+    public AudioAssets SFX; // required manual assignment
 
-    AudioSource audioSource; // assignment not required
+    AudioSource bgmAudioSource; // assignment not required
+    AudioSource sfxAudioSource; // assignment not required
 
     void Awake()
     {
@@ -22,8 +23,13 @@ public class AudioManager : MonoBehaviour
         if (AudioManager.instance == null)
         {
             AudioManager.instance = this;
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.loop = true;
+
+            bgmAudioSource = new GameObject("bgmAudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
+            bgmAudioSource.transform.SetParent(transform);
+            bgmAudioSource.loop = true;
+
+            sfxAudioSource = new GameObject("sfxAudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
+            sfxAudioSource.transform.SetParent(transform);
         }
 
         else
@@ -41,8 +47,7 @@ public class AudioManager : MonoBehaviour
             if (name == audioData.name)
             {
                 found = true;
-                audioSource.PlayOneShot(audioData.clip);
-                Debug.Log("hssssssst");
+                sfxAudioSource.PlayOneShot(audioData.clip);
             }
         }
         if (!found)
@@ -53,7 +58,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopSFX()
     {
-        //todo
+        sfxAudioSource.Stop();
     }
 
     public void PlayBGM(string name)
@@ -65,8 +70,8 @@ public class AudioManager : MonoBehaviour
             if (name == audioData.name)
             {
                 found = true;
-                audioSource.clip = audioData.clip;
-                audioSource.Play();
+                bgmAudioSource.clip = audioData.clip;
+                bgmAudioSource.Play();
             }
         }
         if (!found)
@@ -77,6 +82,6 @@ public class AudioManager : MonoBehaviour
 
     public void StopBGM()
     {
-        audioSource.Stop();
+        bgmAudioSource.Stop();
     }
 }

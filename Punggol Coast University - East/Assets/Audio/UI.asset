@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bc4aa36d1c5014dab53a849946dbe3, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: 
+  audioClips:
+  - name: rollover1
+    clip: {fileID: 8300000, guid: e08e05557993e214da10cecf48f6747f, type: 3}
+  - name: rollover2
+    clip: {fileID: 8300000, guid: c71c016ed4b4c7746817a7cf74771166, type: 3}
+  - name: rollover3
+    clip: {fileID: 8300000, guid: 2561f6bd46ed8eb49b1c0a5dc8117d2e, type: 3}
+  - name: rollover4
+    clip: {fileID: 8300000, guid: 13343c069d89d844fb3fea825f46c8e6, type: 3}
+  - name: rollover5
+    clip: {fileID: 8300000, guid: f01b91e3c97c4324db6038f47596ad3b, type: 3}
+  - name: rollover6
+    clip: {fileID: 8300000, guid: df387e31e66cb6f44a8e271723ae3dc4, type: 3}
