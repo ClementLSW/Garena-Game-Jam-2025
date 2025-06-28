@@ -7,15 +7,15 @@ public class ResumeGenerator : MonoBehaviour
 
     public struct ResumeData
     {
-        public string HeroName;
-        public string GovtName;
-        public Sprite Avatar;
-        public int Age;
-        public int DebutYear;
-        public int CrimeStopped;
-        public int PowersUsed;
-        public string Height;
-        public string Weight;
+        //public string HeroName;
+        //public string GovtName;
+        //public Sprite Avatar;
+        //public int Age;
+        //public int DebutYear;
+        //public int CrimeStopped;
+        //public int PowersUsed;
+        //public string Height;
+        //public string Weight;
 
         public string Superpower;
         public string Weakness;
@@ -166,18 +166,18 @@ public class ResumeGenerator : MonoBehaviour
     {
         ResumeData temp = new ResumeData
         {
-            HeroName = deserializer.GetHeroName(),
-            GovtName = deserializer.GetGovtName(),
-            Age = deserializer.GetAge(),
-            Avatar = deserializer.GetSprite(),
+            //HeroName = deserializer.GetHeroName(),
+            //GovtName = deserializer.GetGovtName(),
+            //Age = deserializer.GetAge(),
+            //Avatar = deserializer.GetSprite(),
+            //Height = deserializer.GetHeight(),
+            //Weight = deserializer.GetWeight()
             Superpower = deserializer.GetPower(),
             Pet = deserializer.GetPet(),
             Hobby = deserializer.GetHobby(),
             Weakness = deserializer.GetWeakness(),
             Hometown = deserializer.GetHometown(),
             FavoriteFood = deserializer.GetFavoriteFood(),
-            Height = deserializer.GetHeight(),
-            Weight = deserializer.GetWeight()
         };
 
         _data = temp;
