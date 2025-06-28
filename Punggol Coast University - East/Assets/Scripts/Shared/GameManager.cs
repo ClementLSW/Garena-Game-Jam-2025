@@ -60,17 +60,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.R))
         {
             RestartScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.P))
         {
             RestartScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();
         }
