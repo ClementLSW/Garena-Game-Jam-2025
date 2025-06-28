@@ -1,7 +1,14 @@
 using UnityEngine;
+using System.Collections;
+using UnityEditor;
 
-public class Input : MonoBehaviour
+public class AnswerBoxControl : MonoBehaviour
 {
+    public bool isAnswer = false;
+
+    public int boxPosition;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,6 +18,6 @@ public class Input : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
