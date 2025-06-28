@@ -118,41 +118,46 @@ public class ResumeSetup : MonoBehaviour
                 break;
         }
 
-        var randomSuperpower = Random.Range(0, 6);
-        randomSuperpower = 0;
+        var randomSuperpower = Random.Range(0, 4);
         switch (randomSuperpower)
         {
+            /*            case 0:
+                            superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#000000>{GenerateRandomLongPaddedString()}";
+                            break;
+                        case 1:
+                            superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#000000>{GenerateRandomLongPaddedString()}";
+                            break;*/
             case 0:
-                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#000000>{GenerateRandomLongPaddedString()}";
+                superpowerTMP.text = $"<mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Superpower}";
                 break;
             case 1:
-                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#000000>{GenerateRandomLongPaddedString()}";
+                superpowerTMP.text = $"<mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Weakness}";
                 break;
             case 2:
-                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#000000>{GenerateRandomLongPaddedString()} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower}";
+                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Superpower}";
                 break;
             case 3:
-                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#000000>{GenerateRandomLongPaddedString()} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness}";
+                superpowerTMP.text = $"<mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#000000>{GenerateRandomLongPaddedString()}<mark=#00000000> {ResumeGenerator.Instance.GetResumeData.Weakness}";
                 break;
-            case 4:
+/*            case 4:
                 superpowerTMP.text = $"<mark=#000000>{GenerateRandomLongPaddedString()} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness}";
                 break;
             case 5:
                 superpowerTMP.text = $"<mark=#000000>{GenerateRandomLongPaddedString()} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower}";
-                break;
+                break;*/
         }
     }
 
     string GenerateRandomPaddedString()
     {
-        var randomPadding = Random.Range(15, 20);
+        var randomPadding = Random.Range(10, 20);
         string padded = "".PadLeft(randomPadding, '0');
         return padded;
     }
 
     string GenerateRandomLongPaddedString()
     {
-        var randomPadding = Random.Range(50, 60);
+        var randomPadding = Random.Range(60, 80);
         string padded = "".PadLeft(randomPadding, '0');
         return padded;
     }
