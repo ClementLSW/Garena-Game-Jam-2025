@@ -9,6 +9,7 @@ public class ResumeDataDeserializer : MonoBehaviour
 
     public List<string> names;
     public List<Sprite> sprites;
+    /*
     public string GetHeroName()
     {
         return "John Doe";
@@ -57,7 +58,7 @@ public class ResumeDataDeserializer : MonoBehaviour
         int pounds = Random.Range(100, 300);
         return $"{pounds} lbs"; // Placeholder for weight retrieval logic
     }
-
+    */
     public string GetPower()
     {
         return ResumeGenerator.Instance

@@ -1,31 +1,48 @@
+using Assets.Scripts.Resume;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Assets.Scripts.Resume.ResumeUtils;
 using static ResumeGenerator;
 
-public class QuestionInstance : MonoBehaviour
+public class QuestionInstance
 {
-    public List<string> Prompts;
+    public string Prompt;
     public string CorrectAnswer;
-    public List<string> PossibleAnswers;
+    public List<string> Answers;
 
     public ResumeData data;
 
-    public QuestionInstance GenerateQuestion(string category, string decoycategory)
+    public Queue<QuestionInstance> GenerateAllQuestions()
     {
-        data = Instance.GetResumeData;
+        var questionQueue = new Queue<QuestionInstance>();
+
+        foreach (Category category in Enum.GetValues(typeof(Category)))
+        {
+            var question = new QuestionInstance();
+            question = CreateFromCategory(category);
+            questionQueue.Enqueue(question);
+        }
+
+        return questionQueue;
     }
 
-    private string GetValueByField(ResumeData data, string field)
+
+    public QuestionInstance CreateFromCategory(Category category)
     {
-        return field switch
-        {
-            "FavoriteFood" => data.FavoriteFood,
-            "Hobby" => data.Hobby,
-            "Pet" => data.Pet,
-            "Hometown" => data.Hometown,
-            "Weakness" => data.Weakness,
-            _ => ""
-        };
+        data = Instance.GetResumeData;
+        QuestionInstance question = new QuestionInstance();
+        question.Prompt = GetPromptForCategory(Instance, category);
+        question.CorrectAnswer = GetAnswerForCategory(data, category);
+        question.Answers = new List<string>(Instance.CategoryDataMap[category].PossibleAnswers);
+        
+        // Do not touch this, held together by math, hopes and prayers
+        question.Answers.AddRange(Instance.CategoryDataMap[
+            (Category)
+            ((int)category + Random.Range(1, 6) % 6)
+            ].PossibleAnswers);
+        
+        return question;
     }
 }
