@@ -1,9 +1,19 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public enum State {
+        NotReady,
+        Ready,
+        Resume,
+        Date,
+        End
+    }
     public Scene currentScene;
+    public State currentState { get; private set; } = State.NotReady;
 
     #region SingletonPattern
     private static GameManager _instance;
@@ -51,6 +61,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public Queue<QuestionInstance> CurrentQuestionSet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,20 +72,42 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.R))
+        
+    }
+
+    public void SwapState(State state)
+    {
+        switch(state)
         {
-            RestartScene();
+            case State.NotReady:
+                // Default Landing Page State
+                break;
+            case State.Ready:
+                // Call when both players are ready
+                break;
+            case State.Resume:
+                ResumeGenerator.Instance.GenerateData();
+                CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
+
+                //TODO:YUNJING Show Resume
+                break;
+            case State.Date:
+                //TODO:YUNJING Handle Date state
+                break;
+            case State.End:
+                //TODO:YUNJING Handle End state
+                break;
+            default:
+                Debug.LogWarning("Unknown state: " + state);
+                break;
         }
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.P))
-        {
-            RestartScene();
-        }
+        currentState = state;
+    }
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void RestartScene()

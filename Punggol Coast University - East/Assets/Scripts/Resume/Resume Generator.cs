@@ -181,6 +181,7 @@ public class ResumeGenerator : MonoBehaviour
         };
 
         _data = temp;
+        QuestionInstance.Instance.GenerateAllQuestions();
     }
 
     public string DataFluff(Category cat)

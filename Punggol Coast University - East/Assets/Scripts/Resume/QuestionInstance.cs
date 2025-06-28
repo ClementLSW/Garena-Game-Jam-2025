@@ -8,6 +8,21 @@ using static ResumeGenerator;
 
 public class QuestionInstance
 {
+
+    private static QuestionInstance _instance;
+    private ResumeDataDeserializer deserializer;
+
+    public static QuestionInstance Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new QuestionInstance();
+            }
+            return _instance;
+        }
+    }
     public string Prompt;
     public string CorrectAnswer;
     public List<string> Answers;
@@ -42,14 +57,14 @@ public class QuestionInstance
 
     public QuestionInstance CreateFromCategory(Category category)
     {
-        data = Instance.GetResumeData;
+        data = ResumeGenerator.Instance.GetResumeData;
         QuestionInstance question = new QuestionInstance();
-        question.Prompt = GetPromptForCategory(Instance, category);
+        question.Prompt = GetPromptForCategory(ResumeGenerator.Instance, category);
         question.CorrectAnswer = GetAnswerForCategory(data, category);
-        question.Answers = new List<string>(Instance.CategoryDataMap[category].PossibleAnswers);
+        question.Answers = new List<string>(ResumeGenerator.Instance.CategoryDataMap[category].PossibleAnswers);
         
         // Do not touch this, held together by math, hopes and prayers
-        question.Answers.AddRange(Instance.CategoryDataMap[
+        question.Answers.AddRange(ResumeGenerator.Instance.CategoryDataMap[
             (Category)
             ((int)category + UnityEngine.Random.Range(1, 6) % 6)
             ].PossibleAnswers);
