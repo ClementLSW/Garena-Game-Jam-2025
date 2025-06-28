@@ -14,18 +14,29 @@ public class QuestionInstance
 
     public ResumeData data;
 
+    // Call this when entering the question scene
     public Queue<QuestionInstance> GenerateAllQuestions()
     {
-        var questionQueue = new Queue<QuestionInstance>();
+        List<QuestionInstance> questionList = new List<QuestionInstance>();
 
         foreach (Category category in Enum.GetValues(typeof(Category)))
         {
-            var question = new QuestionInstance();
-            question = CreateFromCategory(category);
-            questionQueue.Enqueue(question);
+            QuestionInstance question = CreateFromCategory(category);
+            questionList.Add(question);
         }
 
-        return questionQueue;
+        // Fisher-Yates shuffle
+        int n = questionList.Count;
+        System.Random rng = new System.Random();
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            (questionList[n], questionList[k]) = (questionList[k], questionList[n]);
+        }
+
+
+        return new Queue<QuestionInstance>(questionList);
     }
 
 
@@ -40,7 +51,7 @@ public class QuestionInstance
         // Do not touch this, held together by math, hopes and prayers
         question.Answers.AddRange(Instance.CategoryDataMap[
             (Category)
-            ((int)category + Random.Range(1, 6) % 6)
+            ((int)category + UnityEngine.Random.Range(1, 6) % 6)
             ].PossibleAnswers);
         
         return question;

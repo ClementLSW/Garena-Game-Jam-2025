@@ -172,14 +172,79 @@ public class ResumeGenerator : MonoBehaviour
             //Avatar = deserializer.GetSprite(),
             //Height = deserializer.GetHeight(),
             //Weight = deserializer.GetWeight()
-            Superpower = deserializer.GetPower(),
-            Pet = deserializer.GetPet(),
-            Hobby = deserializer.GetHobby(),
-            Weakness = deserializer.GetWeakness(),
+            Superpower = DataFluff(Category.Superpower),
+            Weakness = DataFluff(Category.Weakness),
+            Pet = DataFluff(Category.Pet),
+            Hobby = DataFluff(Category.Hobby),
             Hometown = deserializer.GetHometown(),
-            FavoriteFood = deserializer.GetFavoriteFood(),
+            FavoriteFood = DataFluff(Category.FavouriteFood),
         };
 
         _data = temp;
+    }
+
+    public string DataFluff(Category cat)
+    {
+        int rng = Random.Range(0, 3);
+
+        switch (cat)
+        {
+            case Category.Superpower:
+                string temp = deserializer.GetPower();
+
+                return rng switch
+                {
+                    0 => "My superpower is " + temp + ".",
+                    1 => "I have the ability of " + temp + ".",
+                    2 => "Blessed with the power of " + temp + "they ",
+                    _ => "My superpower is " + temp + ".",
+                };
+
+            case Category.Weakness:
+                string tempWeakness = deserializer.GetWeakness();
+
+                return rng switch
+                {
+                    0 => tempWeakness + " is the one thing that haunts me.",
+                    1 => "I struggle with " + tempWeakness + ".",
+                    2 => "Above all, " + tempWeakness + "scares me the most.",
+                    _ => "My weakness is " + tempWeakness + ".",
+                };
+
+            case Category.Pet:
+                string tempPet = deserializer.GetPet();
+
+                return rng switch
+                {
+                    0 => "I have a pet " + tempPet + ".",
+                    1 => "My beloved pet is a " + tempPet + ".",
+                    2 => "My " + tempPet + " is my ride or die.",
+                    _ => "I have a pet " + tempPet + ".",
+                };
+
+            case Category.Hobby:
+                string tempHobby = deserializer.GetHobby();
+
+                return rng switch
+                {
+                    0 => "In my free time, I enjoy " + tempHobby + ".",
+                    1 => "You can find me " + tempHobby + " when I have some downtime.",
+                    2 => tempHobby + " is my favourite past time.",
+                    _ => "In my free time, I enjoy " + tempHobby + ".",
+                };
+
+            case Category.FavouriteFood:
+                string tempFood = deserializer.GetFavoriteFood();
+
+                return rng switch
+                {
+                    0 => "My favourite food is " + tempFood + ".",
+                    1 => "I love to eat " + tempFood + ".",
+                    2 => "You can always find me eating " + tempFood + ".",
+                    _ => "My favourite food is " + tempFood + ".",
+                };
+        }
+
+        return string.Empty; // Fallback in case of an unexpected category
     }
 }
