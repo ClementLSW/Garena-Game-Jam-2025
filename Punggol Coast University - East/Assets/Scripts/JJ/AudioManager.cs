@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
@@ -12,9 +10,11 @@ public class AudioManager : MonoBehaviour
 
     public AudioAssets BGM; // required manual assignment
     public AudioAssets SFX; // required manual assignment
+    public AudioAssets UI; // required manual assignment
 
-    AudioSource bgmAudioSource; // assignment not required
+    public AudioSource bgmAudioSource; // assignment not required
     AudioSource sfxAudioSource; // assignment not required
+    AudioSource uiAudioSource; // assignment not required
 
     void Awake()
     {
@@ -30,6 +30,9 @@ public class AudioManager : MonoBehaviour
 
             sfxAudioSource = new GameObject("sfxAudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
             sfxAudioSource.transform.SetParent(transform);
+
+            uiAudioSource = new GameObject("uiAudioSource", typeof(AudioSource)).GetComponent<AudioSource>();
+            uiAudioSource.transform.SetParent(transform);
         }
 
         else
@@ -63,7 +66,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlayBGM(string name)
     {
-        StopBGM();
         bool found = false;
         foreach (AudioAssets.AudioData audioData in BGM.audioClips)
         {
@@ -83,5 +85,28 @@ public class AudioManager : MonoBehaviour
     public void StopBGM()
     {
         bgmAudioSource.Stop();
+    }
+
+    public void PlayUIRandom(string[] names)
+    {
+        bool found = false;
+        name = names[UnityEngine.Random.Range(0, names.Length)];
+        foreach (AudioAssets.AudioData audioData in UI.audioClips)
+        {
+            if (name == audioData.name)
+            {
+                found = true;
+                uiAudioSource.PlayOneShot(audioData.clip);
+            }
+        }
+        if (!found)
+        {
+            Debug.Log("String not found!");
+        }
+    }
+
+    public void StopUI()
+    {
+        sfxAudioSource.Stop();
     }
 }
