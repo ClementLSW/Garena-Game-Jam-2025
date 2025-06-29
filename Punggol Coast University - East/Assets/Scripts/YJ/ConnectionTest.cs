@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 public class ConnectionTest : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI player1, player2, startGame;
-    int connectedPlayers = 0;
+    public int connectedPlayers = 0;
 
-    public void JoinPlayer(PlayerInput playerInput)
+    public void JoinPlayer()
     {
         connectedPlayers++;
         player1.text = connectedPlayers > 0 ? "Player 1\nConnected" : "Player 1\nNot connected";
@@ -15,7 +15,7 @@ public class ConnectionTest : MonoBehaviour
         startGame.gameObject.SetActive(connectedPlayers > 1);
     }
 
-    public void LeftPlayer(PlayerInput playerInput)
+    public void LeftPlayer()
     {
         connectedPlayers--;
         player1.text = connectedPlayers > 0 ? "Player 1\nConnected" : "Player 1\nNot connected";
@@ -25,11 +25,13 @@ public class ConnectionTest : MonoBehaviour
 
     public void StartGame()
     {
-        if (connectedPlayers > 1) GameManager.Instance.SwapState(GameManager.State.Ready);
-        foreach (var player in Player.players)
+        if (connectedPlayers > 1 && GameManager.Instance.currentState == GameManager.State.NotReady)
         {
-            player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Resume Scrolling");
-            Debug.Log(player.GetComponent<PlayerInput>().currentActionMap);
+            GameManager.Instance.SwapState(GameManager.State.Resume);
+            /*foreach (var player in Player.players)
+            {
+                player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Resume Minigame");
+            }*/
         }
     }
 }

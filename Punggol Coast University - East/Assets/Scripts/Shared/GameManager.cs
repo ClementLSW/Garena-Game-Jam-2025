@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -91,10 +92,9 @@ public class GameManager : MonoBehaviour
                 break;
             case State.Ready:
                 // Call when both players are ready
-                HideEverything();
-                SwapState(State.Resume);
                 break;
             case State.Resume:
+                HideEverything();
                 ResumeGenerator.Instance.GenerateData();
                 CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
 
@@ -105,6 +105,16 @@ public class GameManager : MonoBehaviour
                 break;
             case State.Date:
                 qnaManager.Populate();
+                HideEverything();
+                foreach (var player in Player.players)
+                {
+                    player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Date Minigame");
+                }
+                dateMinigame.SetActive(true);
+                foreach (var player in Player.players)
+                {
+                    player.FindPlayersWheel();
+                }
                 //TODO:YUNJING Handle Date state
                 break;
             case State.End:
@@ -116,6 +126,7 @@ public class GameManager : MonoBehaviour
         }
 
         currentState = state;
+        Debug.Log($"Changed to {state}");
     }
 
     void HideEverything()

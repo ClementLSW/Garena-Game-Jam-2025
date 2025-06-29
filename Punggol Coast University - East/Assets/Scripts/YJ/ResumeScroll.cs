@@ -53,7 +53,7 @@ public class ResumeScroll : MonoBehaviour
     void PerformScroll()
     {
         var mediatedInput = c1Input + c2Input;
-        Debug.Log(mediatedInput);
+        //Debug.Log(mediatedInput);
         transform.position += (Vector3) mediatedInput * scrollSpeed * Time.deltaTime;
     }
 }

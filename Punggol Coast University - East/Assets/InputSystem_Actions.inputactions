@@ -992,7 +992,7 @@
             ]
         },
         {
-            "name": "Resume Scrolling",
+            "name": "Resume Minigame",
             "id": "5be3b709-a0d5-47a0-bea7-8b0d020b7371",
             "actions": [
                 {
@@ -1068,7 +1068,7 @@
             ]
         },
         {
-            "name": "UI Navigation",
+            "name": "Date Minigame",
             "id": "ece6565b-40cf-4abb-b7b2-cac6e48ef1ae",
             "actions": [
                 {
