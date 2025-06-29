@@ -13,12 +13,12 @@ namespace Assets.Scripts.Resume
         {
             return category switch
             {
-                Category.Superpower => resume.Superpower,
-                Category.Weakness => resume.Weakness,
-                Category.Pet => resume.Pet,
-                Category.Hobby => resume.Hobby,
-                Category.HomeTown => resume.Hometown,
-                Category.FavouriteFood => resume.FavoriteFood,
+                Category.Superpower => resume.unfluffedSuperpower,
+                Category.Weakness => resume.unfluffedWeakness,
+                Category.Pet => resume.unfluffedPet,
+                Category.Hobby => resume.unfluffedHobby,
+                Category.HomeTown => resume.unfluffedHometown,
+                Category.FavouriteFood => resume.unfluffedFavoriteFood,
                 _ => string.Empty
             };
         }

@@ -25,6 +25,14 @@ public class ResumeGenerator : MonoBehaviour
         public string Hobby;
         public string Hometown;
         public string FavoriteFood;
+
+        public string unfluffedSuperpower;
+        public string unfluffedWeakness;
+
+        public string unfluffedPet;
+        public string unfluffedHobby;
+        public string unfluffedHometown;
+        public string unfluffedFavoriteFood;
     }
     private ResumeData _data;
     public ResumeData GetResumeData
@@ -170,6 +178,13 @@ public class ResumeGenerator : MonoBehaviour
             Hobby = DataFluff(Category.Hobby),
             Hometown = deserializer.GetHometown(),
             FavoriteFood = DataFluff(Category.FavouriteFood),
+
+            unfluffedSuperpower = deserializer.GetPower(),
+            unfluffedWeakness = deserializer.GetWeakness(),
+            unfluffedPet = deserializer.GetPet(),
+            unfluffedHobby = deserializer.GetHobby(),
+            unfluffedHometown = deserializer.GetHometown(),
+            unfluffedFavoriteFood = deserializer.GetFavoriteFood(),
         };
 
         _data = temp;
@@ -183,8 +198,8 @@ public class ResumeGenerator : MonoBehaviour
         switch (cat)
         {
             case Category.Superpower:
-                string temp = deserializer.GetPower();
-
+                //string temp = deserializer.GetPower();
+                string temp = _data.unfluffedSuperpower;
                 return rng switch
                 {
                     0 => "My superpower is " + temp + ".",
@@ -194,8 +209,8 @@ public class ResumeGenerator : MonoBehaviour
                 };
 
             case Category.Weakness:
-                string tempWeakness = deserializer.GetWeakness();
-
+                //string tempWeakness = deserializer.GetWeakness();
+                string tempWeakness = _data.unfluffedWeakness;
                 return rng switch
                 {
                     0 => tempWeakness + " is the one thing that haunts me.",
@@ -205,8 +220,8 @@ public class ResumeGenerator : MonoBehaviour
                 };
 
             case Category.Pet:
-                string tempPet = deserializer.GetPet();
-
+                //string tempPet = deserializer.GetPet();
+                string tempPet = _data.unfluffedPet;
                 return rng switch
                 {
                     0 => "I have a pet " + tempPet + ".",
@@ -216,8 +231,8 @@ public class ResumeGenerator : MonoBehaviour
                 };
 
             case Category.Hobby:
-                string tempHobby = deserializer.GetHobby();
-
+                //string tempHobby = deserializer.GetHobby();
+                string tempHobby = _data.unfluffedHobby;
                 return rng switch
                 {
                     0 => "In my free time, I enjoy " + tempHobby + ".",
@@ -227,8 +242,8 @@ public class ResumeGenerator : MonoBehaviour
                 };
 
             case Category.FavouriteFood:
-                string tempFood = deserializer.GetFavoriteFood();
-
+                //string tempFood = deserializer.GetFavoriteFood();
+                string tempFood = _data.unfluffedFavoriteFood;
                 return rng switch
                 {
                     0 => "My favourite food is " + tempFood + ".",

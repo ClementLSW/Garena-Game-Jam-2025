@@ -40,10 +40,6 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject); // Make this persistent
         }
-        //Debug
-        /*ResumeGenerator.Instance.GenerateData();
-        CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
-        SwapState(State.Date); // Initialize to NotReady state*/
     }
     #endregion
 
@@ -104,6 +100,8 @@ public class GameManager : MonoBehaviour
                 //DONE:YUNJING Show Resume
                 break;
             case State.Date:
+                ResumeGenerator.Instance.GenerateData();
+                CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
                 qnaManager.Populate();
                 HideEverything();
                 foreach (var player in Player.players)
