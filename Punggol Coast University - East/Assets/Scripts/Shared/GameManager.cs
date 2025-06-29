@@ -100,6 +100,8 @@ public class GameManager : MonoBehaviour
                 //DONE:YUNJING Show Resume
                 break;
             case State.Date:
+                ResumeGenerator.Instance.GenerateData();
+                CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
                 qnaManager.Populate();
                 //TODO:YUNJING Handle Date state
                 break;

@@ -7,7 +7,7 @@ public class QnAManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Wheel1Options;
     [SerializeField] private List<GameObject> Wheel2Options;
-    [SerializeField] private List<GameObject> QuestionFields;
+    [SerializeField] private GameObject QuestionField;
 
     private QuestionInstance question;
 
@@ -22,6 +22,8 @@ public class QnAManager : MonoBehaviour
             Debug.LogError("GameManager instance not found!");
             return;
         }
+
+        _gameManager.SwapState(GameManager.State.Date);
     }
 
     /// <summary>
@@ -31,6 +33,7 @@ public class QnAManager : MonoBehaviour
     {
 
         question = _gameManager.CurrentQuestionSet.Dequeue();
+        Debug.Log("Prompt is " + question.Prompt);
         
         for (int i = 0; i < 6; i++)
         {
@@ -38,10 +41,7 @@ public class QnAManager : MonoBehaviour
             Wheel2Options[i].GetComponentInChildren<TMP_Text>().text = question.Answers[i];
         }
 
-        foreach (var qField in QuestionFields)
-        {
-            qField.GetComponent<TMP_Text>().text = question.Prompt;
-        }
+        QuestionField.GetComponentInChildren<TMP_Text>().text = question.Prompt;
     }
 
     /// <summary>
