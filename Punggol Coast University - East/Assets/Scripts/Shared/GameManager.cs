@@ -41,9 +41,9 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(gameObject); // Make this persistent
         }
         //Debug
-        ResumeGenerator.Instance.GenerateData();
+        /*ResumeGenerator.Instance.GenerateData();
         CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
-        SwapState(State.Date); // Initialize to NotReady state
+        SwapState(State.Date); // Initialize to NotReady state*/
     }
     #endregion
 
