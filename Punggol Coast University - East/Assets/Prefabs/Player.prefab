@@ -167,11 +167,35 @@ MonoBehaviour:
     m_ActionId: 5b33b730-2c23-464b-96c0-f8de7ad10bd0
     m_ActionName: 'Resume Scrolling/Scroll[/XInputControllerWindows/leftStick]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5813940140693073399}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PerformChooseNextAnswer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: aae42256-052d-4062-973f-7a6838c50f20
     m_ActionName: 'UI Navigation/Navigate Up[/XInputControllerWindows/leftStick/up]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5813940140693073399}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PerformChoosePrevAnswer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4b10d461-bb15-40d3-8acc-57e7809d7df4
     m_ActionName: 'UI Navigation/Navigate Down[/XInputControllerWindows/leftStick/down]'
   - m_PersistentCalls:
@@ -190,9 +214,25 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b0b63649-3544-48a1-8ec7-e384eb4cc85c
     m_ActionName: 'Resume Scrolling/Power[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5813940140693073399}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: PerformStartGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ec04a0e7-101e-4a1f-9400-ebe2ef800915
+    m_ActionName: 'Main Menu/Start Game[/XInputControllerWindows/buttonSouth,/XInputControllerWindows1/buttonSouth]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Gamepad
-  m_DefaultActionMap: Resume Scrolling
+  m_DefaultActionMap: Main Menu
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!212 &1460807933455548695

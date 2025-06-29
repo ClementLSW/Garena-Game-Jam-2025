@@ -63,6 +63,8 @@ public class GameManager : MonoBehaviour
 
     public Queue<QuestionInstance> CurrentQuestionSet;
 
+    [SerializeField] GameObject mainMenu, resumeMinigame, dateMinigame;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,12 +86,16 @@ public class GameManager : MonoBehaviour
                 break;
             case State.Ready:
                 // Call when both players are ready
+                HideEverything();
+                SwapState(State.Resume);
                 break;
             case State.Resume:
                 ResumeGenerator.Instance.GenerateData();
                 CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
 
-                //TODO:YUNJING Show Resume
+                resumeMinigame.SetActive(true);
+
+                //DONE:YUNJING Show Resume
                 break;
             case State.Date:
                 //TODO:YUNJING Handle Date state
@@ -103,6 +109,13 @@ public class GameManager : MonoBehaviour
         }
 
         currentState = state;
+    }
+
+    void HideEverything()
+    {
+        mainMenu.SetActive(false);
+        resumeMinigame.SetActive(false);
+        dateMinigame.SetActive(false);
     }
 
     public void LoadScene(string sceneName)

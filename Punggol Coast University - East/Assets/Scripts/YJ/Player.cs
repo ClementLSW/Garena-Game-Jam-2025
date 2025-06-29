@@ -1,11 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    static List<Player> players = new();
+    public static List<Player> players = new();
     static ResumeScroll scrollController;
     int playerId;
     Vector2 currentInputValue, targetInputValue;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     float power = 0f;
 
     [SerializeField] AnimatorController controllerLeft, controllerRight;
+    Wheel playersWheel;
 
     private void Start()
     {
@@ -20,12 +22,13 @@ public class Player : MonoBehaviour
         players.Add(this);
         scrollController = scrollController != null ? scrollController : FindAnyObjectByType<ResumeScroll>();
         GetComponent<Animator>().runtimeAnimatorController = playerId % 2 != 0 ? controllerLeft : controllerRight;
+        playersWheel = FindObjectsByType<Wheel>(sortMode: FindObjectsSortMode.None).Where(x => x.WheelId == playerId).FirstOrDefault();
     }
     private void Update()
     {
         //currentInputValue = Vector2.Lerp(currentInputValue, targetInputValue, Time.deltaTime);
-        scrollController.SubmitInput(playerId, currentInputValue * (power + 1));
-        Debug.Log($"Power {power}");
+        //scrollController.SubmitInput(playerId, currentInputValue * (power + 1));
+        //Debug.Log($"Power {power}");
         DepletePower();
 
     }
@@ -40,6 +43,21 @@ public class Player : MonoBehaviour
     {
         if (ctx.performed) power += 1.0f;
 
+    }
+
+    public void PerformChooseNextAnswer(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) playersWheel.MoveNext();
+    }
+
+    public void PerformChoosePrevAnswer(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) playersWheel.MovePrev();
+    }
+
+    public void PerformStartGame(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed) FindAnyObjectByType<ConnectionTest>().StartGame();
     }
 
     void DepletePower()

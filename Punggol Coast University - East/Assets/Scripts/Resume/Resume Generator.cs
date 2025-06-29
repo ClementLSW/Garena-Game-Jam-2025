@@ -1,5 +1,6 @@
 using Assets.Scripts.Resume;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResumeGenerator : MonoBehaviour
@@ -42,15 +43,6 @@ public class ResumeGenerator : MonoBehaviour
     {
         get
         {
-            if (_instance == null)
-            {
-                _instance = FindAnyObjectByType<ResumeGenerator>();
-                if (_instance == null)
-                {
-                    GameObject obj = new GameObject("ResumeGenerator");
-                    _instance = obj.AddComponent<ResumeGenerator>();
-                }
-            }
             return _instance;
         }
     }

@@ -22,7 +22,7 @@ public class WheelCollider : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    /*public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "AnswerBox")
         {
@@ -44,7 +44,7 @@ public class WheelCollider : MonoBehaviour
                 other.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             }
         }
-    }
+    }*/
 
     //public void OnTriggerExit2D(Collider2D other)
     //{

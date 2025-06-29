@@ -1040,6 +1040,34 @@
             ]
         },
         {
+            "name": "Main Menu",
+            "id": "ccc759ef-4f3b-475d-9c9d-265e500d0177",
+            "actions": [
+                {
+                    "name": "Start Game",
+                    "type": "Button",
+                    "id": "ec04a0e7-101e-4a1f-9400-ebe2ef800915",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "44c72112-c9b7-42e1-8d60-6da03f832b89",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Start Game",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "UI Navigation",
             "id": "ece6565b-40cf-4abb-b7b2-cac6e48ef1ae",
             "actions": [
