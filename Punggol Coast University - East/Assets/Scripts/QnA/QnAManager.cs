@@ -1,12 +1,13 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 
 public class QnAManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Wheel1Options;
     [SerializeField] private List<GameObject> Wheel2Options;
-    [SerializeField] private GameObject QuestionField;
+    [SerializeField] private List<GameObject> QuestionFields;
 
     private QuestionInstance question;
 
@@ -28,13 +29,18 @@ public class QnAManager : MonoBehaviour
     /// </summary>
     public void Populate()
     {
-        question = _gameManager.CurrentQuestionSet.Dequeue();
-        QuestionField.GetComponentInChildren<TMP_Text>().text = question.Prompt;
 
+        question = _gameManager.CurrentQuestionSet.Dequeue();
+        
         for (int i = 0; i < 6; i++)
         {
-            Wheel1Options[i].GetComponentInChildren<TextMeshProUGUI>().text = question.Answers[i];
-            Wheel2Options[i].GetComponentInChildren<TextMeshProUGUI>().text = question.Answers[i];
+            Wheel1Options[i].GetComponentInChildren<TMP_Text>().text = question.Answers[i];
+            Wheel2Options[i].GetComponentInChildren<TMP_Text>().text = question.Answers[i];
+        }
+
+        foreach (var qField in QuestionFields)
+        {
+            qField.GetComponent<TMP_Text>().text = question.Prompt;
         }
     }
 

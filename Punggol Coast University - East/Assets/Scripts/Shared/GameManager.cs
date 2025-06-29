@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject); // Make this persistent
         }
+        //Debug
+        ResumeGenerator.Instance.GenerateData();
+        CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
+        SwapState(State.Date); // Initialize to NotReady state
     }
     #endregion
 
@@ -64,6 +68,7 @@ public class GameManager : MonoBehaviour
     public Queue<QuestionInstance> CurrentQuestionSet;
 
     [SerializeField] GameObject mainMenu, resumeMinigame, dateMinigame;
+    [SerializeField] QnAManager qnaManager;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +104,7 @@ public class GameManager : MonoBehaviour
                 //DONE:YUNJING Show Resume
                 break;
             case State.Date:
+                qnaManager.Populate();
                 //TODO:YUNJING Handle Date state
                 break;
             case State.End:
