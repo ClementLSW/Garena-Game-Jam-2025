@@ -25,3 +25,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f01b91e3c97c4324db6038f47596ad3b, type: 3}
   - name: rollover6
     clip: {fileID: 8300000, guid: df387e31e66cb6f44a8e271723ae3dc4, type: 3}
+  - name: switch1
+    clip: {fileID: 8300000, guid: 1befa1a84509da141bf45e1df986ce2b, type: 3}
+  - name: switch2
+    clip: {fileID: 8300000, guid: 162f9ca013e718546b9ee3edf2c29dea, type: 3}
+  - name: switch3
+    clip: {fileID: 8300000, guid: c6bade040d801cf4f8794c06da492761, type: 3}
+  - name: switch4
+    clip: {fileID: 8300000, guid: dfabe6fe8f9551a4bbdd10317fd1c182, type: 3}
+  - name: switch5
+    clip: {fileID: 8300000, guid: c5afd6451c54beb4a852ddd81980c7a7, type: 3}
+  - name: switch6
+    clip: {fileID: 8300000, guid: cd0bc839c9cd91c45b74b34b6bff493d, type: 3}

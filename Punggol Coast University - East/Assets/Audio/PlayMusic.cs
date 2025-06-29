@@ -7,9 +7,12 @@ public class PlayMusic : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // float timer = 3f; test works
-    void Start()
+    public string musicTrack;
+    public bool loop;
+    void OnEnable()
     {
-        AudioManager.Instance.PlayBGM("quiz");
+        AudioManager.Instance.PlayBGM(musicTrack);
+        AudioManager.Instance.bgmAudioSource.loop = loop;
     }
 
     /*void Update()
