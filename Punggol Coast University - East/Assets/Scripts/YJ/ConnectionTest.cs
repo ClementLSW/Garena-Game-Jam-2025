@@ -29,6 +29,7 @@ public class ConnectionTest : MonoBehaviour
         foreach (var player in Player.players)
         {
             player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Resume Scrolling");
+            Debug.Log(player.GetComponent<PlayerInput>().currentActionMap);
         }
     }
 }

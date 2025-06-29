@@ -20,14 +20,19 @@ public class Player : MonoBehaviour
     {
         playerId = players.Count;
         players.Add(this);
-        scrollController = scrollController != null ? scrollController : FindAnyObjectByType<ResumeScroll>();
         GetComponent<Animator>().runtimeAnimatorController = playerId % 2 != 0 ? controllerLeft : controllerRight;
         playersWheel = FindObjectsByType<Wheel>(sortMode: FindObjectsSortMode.None).Where(x => x.WheelId == playerId).FirstOrDefault();
+    }
+
+    static public void FindScrollController()
+    {
+        scrollController = scrollController ?? FindAnyObjectByType<ResumeScroll>();
     }
     private void Update()
     {
         //currentInputValue = Vector2.Lerp(currentInputValue, targetInputValue, Time.deltaTime);
-        //scrollController.SubmitInput(playerId, currentInputValue * (power + 1));
+        if (scrollController == null) return;
+        scrollController.SubmitInput(playerId, currentInputValue * (power + 1));
         //Debug.Log($"Power {power}");
         DepletePower();
 

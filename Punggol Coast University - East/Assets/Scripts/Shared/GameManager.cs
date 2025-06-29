@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
                 CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
 
                 resumeMinigame.SetActive(true);
+                Player.FindScrollController();
 
                 //DONE:YUNJING Show Resume
                 break;

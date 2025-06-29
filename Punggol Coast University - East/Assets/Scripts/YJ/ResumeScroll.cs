@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ResumeScroll : MonoBehaviour
@@ -29,6 +30,14 @@ public class ResumeScroll : MonoBehaviour
         maxX = resume.bounds.size.x * 0.5f - horExtend;
         minY = vertExtend - resume.bounds.size.y * 0.5f;
         maxY = resume.bounds.size.y * 0.5f - vertExtend;
+
+        StartCoroutine(CountdownAndChangeScene());
+    }
+
+    IEnumerator CountdownAndChangeScene()
+    {
+        yield return new WaitForSeconds(15f);
+        GameManager.Instance.SwapState(GameManager.State.Date);
     }
 
     private void Update()

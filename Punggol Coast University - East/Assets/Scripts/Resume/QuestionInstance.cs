@@ -65,8 +65,7 @@ public class QuestionInstance
         
         // Do not touch this, held together by math, hopes and prayers
         question.Answers.AddRange(ResumeGenerator.Instance.CategoryDataMap[
-            (Category)
-            ((int)category + UnityEngine.Random.Range(1, 6) % 6)
+            (Category)(((int)category + UnityEngine.Random.Range(1, 6)) % 6)
             ].PossibleAnswers);
         
         return question;

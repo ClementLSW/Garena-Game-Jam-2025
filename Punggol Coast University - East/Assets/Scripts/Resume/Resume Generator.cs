@@ -60,9 +60,9 @@ public class ResumeGenerator : MonoBehaviour
                 "<color=red>ramen</color>"
             },
             new List<string> {
-                "After a long day, i go home and eat what?",
+                "After a long day, I go home and eat what?",
                 "My all time favourite food is?",
-                "What is my favourite Dinner?"
+                "What is my favourite dinner?"
             }
             );
 
