@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
+    #region fuck 
+
+    public int p1Score, p2Score, p1Sidekick, p2Sidekick;
+
+    #endregion
+
     public enum State {
         NotReady,
         Ready,
@@ -90,24 +96,29 @@ public class GameManager : MonoBehaviour
                 // Call when both players are ready
                 break;
             case State.Resume:
-                HideEverything();
                 ResumeGenerator.Instance.GenerateData();
                 CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
+                HideEverything();
 
                 resumeMinigame.SetActive(true);
+                FindAnyObjectByType<ResumeSetup>().Setup();
                 Player.FindScrollController();
 
                 //DONE:YUNJING Show Resume
                 break;
             case State.Date:
-                ResumeGenerator.Instance.GenerateData();
-                CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();
+                /*ResumeGenerator.Instance.GenerateData();
+                CurrentQuestionSet = QuestionInstance.Instance.GenerateAllQuestions();*/
+                foreach (var wheel in FindObjectsByType<Wheel>(FindObjectsSortMode.None))
+                {
+                    wheel.Setup();
+                }
                 qnaManager.Populate();
                 HideEverything();
-                foreach (var player in Player.players)
+                /*foreach (var player in Player.players)
                 {
                     player.GetComponent<PlayerInput>().SwitchCurrentActionMap("Date Minigame");
-                }
+                }*/
                 dateMinigame.SetActive(true);
                 foreach (var player in Player.players)
                 {

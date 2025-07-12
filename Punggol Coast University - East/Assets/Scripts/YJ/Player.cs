@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public static List<Player> players = new();
     static ResumeScroll scrollController;
-    int playerId;
+    public int playerId;
     Vector2 currentInputValue, targetInputValue;
 
     float power = 0f;
@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
                         currentInputValue = new Vector2(horizontal, vertical);
                         break;
                 }
-                Debug.Log($"{gameObject.name} input: {currentInputValue}");
+                //Debug.Log($"{gameObject.name} input: {currentInputValue}");
                 scrollController.SubmitInput(playerId, currentInputValue * (power + 1));
                 DepletePower();
                 break;
@@ -160,10 +160,12 @@ public class Player : MonoBehaviour
                     case 0:
                         if (Input.GetKeyDown(KeyCode.S)) playersWheel.MoveNext();
                         if (Input.GetKeyDown(KeyCode.W)) playersWheel.MovePrev();
+                        if (Input.GetKeyDown(KeyCode.Space)) playersWheel.SubmitAnswer();
                         break;
                     case 1:
                         if (Input.GetKeyDown(KeyCode.DownArrow)) playersWheel.MoveNext();
                         if (Input.GetKeyDown(KeyCode.UpArrow)) playersWheel.MovePrev();
+                        if (Input.GetKeyDown(KeyCode.Return)) playersWheel.SubmitAnswer();
                         break;
                 }
                 break;

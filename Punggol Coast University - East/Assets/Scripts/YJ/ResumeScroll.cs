@@ -31,6 +31,11 @@ public class ResumeScroll : MonoBehaviour
         minY = vertExtend - resume.bounds.size.y * 0.5f;
         maxY = resume.bounds.size.y * 0.5f - vertExtend;
 
+        //StartResumeScrollCounter();
+    }
+
+    public void StartResumeScrollCounter()
+    {
         StartCoroutine(CountdownAndChangeScene());
     }
 

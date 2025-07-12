@@ -172,22 +172,24 @@ public class ResumeGenerator : MonoBehaviour
             //Avatar = deserializer.GetSprite(),
             //Height = deserializer.GetHeight(),
             //Weight = deserializer.GetWeight()
-            Superpower = DataFluff(Category.Superpower),
-            Weakness = DataFluff(Category.Weakness),
-            Pet = DataFluff(Category.Pet),
-            Hobby = DataFluff(Category.Hobby),
-            Hometown = deserializer.GetHometown(),
-            FavoriteFood = DataFluff(Category.FavouriteFood),
-
             unfluffedSuperpower = deserializer.GetPower(),
             unfluffedWeakness = deserializer.GetWeakness(),
             unfluffedPet = deserializer.GetPet(),
             unfluffedHobby = deserializer.GetHobby(),
             unfluffedHometown = deserializer.GetHometown(),
             unfluffedFavoriteFood = deserializer.GetFavoriteFood(),
+
+
+            Superpower = DataFluff(Category.Superpower),
+            Weakness = DataFluff(Category.Weakness),
+            Pet = DataFluff(Category.Pet),
+            Hobby = DataFluff(Category.Hobby),
+            Hometown = deserializer.GetHometown(),
+            FavoriteFood = DataFluff(Category.FavouriteFood),
         };
 
-        _data = temp;
+
+         _data = temp;
         QuestionInstance.Instance.GenerateAllQuestions();
     }
 

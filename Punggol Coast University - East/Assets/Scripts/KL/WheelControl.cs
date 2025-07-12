@@ -21,6 +21,7 @@ public class WheelControl : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Canvas canvas;
 
+    public bool allowScroll = true;
     private void Start()
     {
         answerBoxControl = GetComponent<AnswerBoxControl>();
@@ -48,6 +49,7 @@ public class WheelControl : MonoBehaviour
 
     public void MoveToPreviousWaypoint()
     {
+        if (!allowScroll) return;
         if (waypoint == null) return;
         Debug.Log($"{gameObject.name} moving to {waypoint.PrevWaypoint}");
         answerBoxControl.boxInFocus = waypoint.PrevWaypoint.isSelectedWaypoint;
@@ -58,6 +60,7 @@ public class WheelControl : MonoBehaviour
 
     public void MoveToNextWaypoint()
     {
+        if (!allowScroll) return;
         if (waypoint == null) return;
         Debug.Log($"{gameObject.name} moving to {waypoint.NextWaypoint}");
         answerBoxControl.boxInFocus = waypoint.NextWaypoint.isSelectedWaypoint;

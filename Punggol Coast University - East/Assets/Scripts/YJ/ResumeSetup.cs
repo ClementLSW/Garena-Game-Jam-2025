@@ -9,9 +9,14 @@ public class ResumeSetup : MonoBehaviour
     [SerializeField] GameObject superpowerBento;
     List<GameObject> slottedBento = new();
     [SerializeField] List<Transform> bentoSlotsY0, bentoSlotsY1, bentoSlotsY2, bentoSlotsPureY;
-    [SerializeField] TextMeshProUGUI funFactTMP, familyTMP, superpowerTMP;
-    private void Start()
+    [SerializeField] TextMeshProUGUI funFactTMP, familyTMP, superpowerTMP, hometownTMP;
+    public void Setup()
     {
+        foreach (var bento in slottedBento)
+        {
+            bentos.Add(bento);
+        }
+        slottedBento.Clear();
         //Setup superpowers (long)
         var superpowerSlot = Random.Range(0, 3);
         //Place superpower Gameobject
@@ -146,6 +151,9 @@ public class ResumeSetup : MonoBehaviour
                 superpowerTMP.text = $"<mark=#000000>{GenerateRandomLongPaddedString()} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Weakness} <mark=#00000000>{ResumeGenerator.Instance.GetResumeData.Superpower}";
                 break;*/
         }
+
+        hometownTMP.text = $"{ResumeGenerator.Instance.GetResumeData.unfluffedHometown}";
+        FindAnyObjectByType<ResumeScroll>().StartResumeScrollCounter();
     }
 
     string GenerateRandomPaddedString()

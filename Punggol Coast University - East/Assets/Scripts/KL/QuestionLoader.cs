@@ -72,11 +72,11 @@ public class QuestionLoader : MonoBehaviour
                     answerBoxes1[i].GetComponentInChildren<TMP_Text>().text = allAnswers[i];
                     answerBoxes2[i].GetComponentInChildren<TMP_Text>().text = allAnswers[i];
 
-                    if (i == 5) // last is correct answer
+                    /*if (i == 5) // last is correct answer
                     {
                         answerBoxes1[i].GetComponent<AnswerBoxControl>().isAnswer = true;
                         answerBoxes2[i].GetComponent<AnswerBoxControl>().isAnswer = true;
-                    }
+                    }*/
                 }
             }
         }

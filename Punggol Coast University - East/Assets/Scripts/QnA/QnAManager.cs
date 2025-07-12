@@ -23,16 +23,15 @@ public class QnAManager : MonoBehaviour
             return;
         }
 
-        _gameManager.SwapState(GameManager.State.Date);
-    }
+/*        _gameManager.SwapState(GameManager.State.Date);
+*/    }
 
     /// <summary>
     /// dequeue a question from the current question set and populate the UI elements with the question and answers.
     /// </summary>
     public void Populate()
     {
-
-        question = _gameManager.CurrentQuestionSet.Dequeue();
+        question = GameManager.Instance.CurrentQuestionSet.Dequeue();
         Debug.Log("Prompt is " + question.Prompt);
         
         for (int i = 0; i < 6; i++)
@@ -51,6 +50,7 @@ public class QnAManager : MonoBehaviour
     /// <returns>Boolean stating match or no match</returns>
     public bool ValidateAnswer(string selectedanswer)
     {
+        Debug.LogError($"Selected: {selectedanswer} | Correct: {question.CorrectAnswer}");
         return selectedanswer == question.CorrectAnswer;
     }
 }

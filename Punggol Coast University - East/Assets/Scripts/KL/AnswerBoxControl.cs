@@ -1,14 +1,14 @@
-using UnityEngine;
-using System.Collections;
-using UnityEditor;
 using TMPro;
+using UnityEngine;
 
 public class AnswerBoxControl : MonoBehaviour
 {
     public bool boxInFocus = false;
-    public bool isAnswer = false;
+    public bool isAnswered = false;
 
     public int boxPosition;
+
+    [SerializeField] Sprite normalBox, coloredBox;
 
     public TMP_Text answerText;
 
@@ -18,19 +18,18 @@ public class AnswerBoxControl : MonoBehaviour
         answerText = GetComponentInChildren<TMP_Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AnswerLocked(bool isCorrectAnswer)
     {
-        if (Input.GetKey(KeyCode.L)) // add input here
-        {
-            if (boxInFocus == true && isAnswer)
-            {
-                // win logic here
-            }
-            else
-            {
-                // lose logic here
-            }
-        }
+        isAnswered = true;
+        GetComponent<SpriteRenderer>().sprite = coloredBox;
+        GetComponent<SpriteRenderer>().color = isCorrectAnswer ? Color.green : Color.red;
+
+    }
+    public void AnswerUnlock()
+    {
+        isAnswered = false;
+        GetComponent<SpriteRenderer>().sprite = normalBox;
+        GetComponent<SpriteRenderer>().color = Color.white;
+
     }
 }
